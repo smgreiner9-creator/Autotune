@@ -1,30 +1,45 @@
-/* Styles specific to the App component */
+/* Jendrix Tune - Pitch Correction UI */
 
 .app {
   text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .app-header {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
 }
 
 .app-title {
-  margin-bottom: 0.5rem;
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.app-subtitle {
+  margin: 0.5rem 0 1rem;
+  font-size: 1.1em;
+  opacity: 0.9;
 }
 
 .node-info {
-  color: var(--text-secondary);
   font-size: 0.9em;
-  margin-bottom: 2rem;
+  opacity: 0.8;
 }
 
 .node-id {
-  color: var(--primary-color);
   font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
 }
 
 .not-connected {
-  color: var(--error-color);
+  color: #ff6b6b;
 }
 
 /* Main content sections */
@@ -138,17 +153,258 @@
   margin-top: 1rem;
 }
 
+/* Audio Control */
+.audio-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.audio-toggle {
+  font-size: 1.2em;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+.audio-toggle:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.audio-toggle.running {
+  background-color: #f59e0b;
+}
+
+.audio-toggle.running:hover:not(:disabled) {
+  background-color: #d97706;
+}
+
+.audio-status {
+  color: #10b981;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-indicator {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Pitch Display */
+.pitch-display {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border-radius: 12px;
+  border: 2px solid #d1d5db;
+}
+
+.pitch-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pitch-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.pitch-value {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.pitch-cents {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #8b5cf6;
+  background-color: rgba(139, 92, 246, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+/* Parameter Controls */
+.section-description {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.param-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.param-control {
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.param-control label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.param-hint {
+  font-size: 0.9em;
+  font-weight: 400;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.param-control input[type="range"] {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #d1d5db;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.param-control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.param-control input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--primary-hover);
+  transform: scale(1.2);
+}
+
+.param-control input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  border: none;
+}
+
+.param-control select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1em;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.param-description {
+  font-size: 0.85em;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+.current-scale-display {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(102, 126, 234, 0.1);
+  border-radius: 8px;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Checkboxes */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.checkbox-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.checkbox-label span {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Info Section */
+.info-section {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-color: #fbbf24;
+}
+
+.feature-note {
+  background-color: rgba(251, 191, 36, 0.2);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.feature-list {
+  text-align: left;
+  max-width: 500px;
+  margin: 1rem auto;
+  line-height: 1.8;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
-  #root {
+  .app {
     padding: 1rem;
   }
-  
+
+  .app-header {
+    padding: 1.5rem;
+  }
+
+  .app-title {
+    font-size: 2em;
+  }
+
   .section {
-    padding: 1rem;
+    padding: 1.5rem;
   }
-  
-  .counter-section {
-    flex-direction: column;
+
+  .param-group {
+    grid-template-columns: 1fr;
+  }
+
+  .pitch-value {
+    font-size: 1.5em;
   }
 }

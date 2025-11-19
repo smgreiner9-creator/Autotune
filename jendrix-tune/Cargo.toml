@@ -4,10 +4,6 @@ process_macros = "0.1"
 serde_json = "1.0"
 wit-bindgen = "0.42.1"
 
-[dependencies.jendrix_tune_caller_utils]
-optional = true
-path = "../target/jendrix-tune-caller-utils"
-
 [dependencies.hyperprocess_macro]
 git = "https://github.com/hyperware-ai/hyperprocess-macro"
 rev = "aaf7e02"
@@ -17,9 +13,16 @@ features = ["hyperapp"]
 git = "https://github.com/hyperware-ai/process_lib"
 rev = "e8b065179ce5d15893a23142416e59c87e0f31f6"
 
+[dependencies.jendrix_tune_caller_utils]
+optional = true
+path = "../target/jendrix-tune-caller-utils"
+
 [dependencies.serde]
 features = ["derive"]
 version = "1.0"
+
+[features]
+caller-utils = ["jendrix_tune_caller_utils"]
 
 [lib]
 crate-type = ["cdylib"]
