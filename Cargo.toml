@@ -1,0 +1,11 @@
+[profile.release]
+lto = true
+opt-level = "s"
+panic = "abort"
+
+[workspace]
+members = [
+    "jendrix-tune",
+    "target/jendrix-tune-caller-util?",
+]
+resolver = "2"

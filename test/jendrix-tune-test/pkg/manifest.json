@@ -1,0 +1,16 @@
+[
+    {
+        "process_name": "jendrix-tune-test",
+        "process_wasm_path": "/jendrix-tune-test.wasm",
+        "on_exit": "Restart",
+        "request_networking": false,
+        "request_capabilities": [
+            "jendrix-tune:jendrix-tune:template.os"
+        ],
+        "grant_capabilities": [
+            "jendrix-tune:jendrix-tune:template.os",
+            "tester:tester:sys"
+        ],
+        "public": true
+    }
+]
